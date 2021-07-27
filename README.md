@@ -13,7 +13,7 @@ Slade download link: https://slade.mancubus.net/index.php?page=downloads
 
 ### How to play the wad
 To play the wad you need the free source port gzdoom and the
-not-so-free hexen iwad which you buy on steam.  Fortunately, ShadesMan has
+not-so-free hexen iwad which you can buy on steam.  Fortunately, ShadesMan has
 done a video of them playing my map which you can watch on youtube:
 https://www.youtube.com/watch?v=No_eOpvK2_E&t=1767s
 
