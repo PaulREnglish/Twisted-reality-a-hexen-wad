@@ -1,0 +1,51 @@
+This is the script I use to get the monster to predict the player's movements and hence 'lead their shots.' 
+It assumes the player is travelling in a circle at a constant speed (which is a common tactic players use in the hexen games) 
+There are a few things I forgot to amend such as the redundant distsqr variable.
+
+//I've changed this script to return the current shooter's angle if the target it too far away (this means you must you A_FaceTarget in order for this to work.)
+// Yes I could use GetActorAngle instead of VectorAngle but I'd rather not mess too much with the code.
+
+Script "Demon1CircularAngle" (Void)
+{
+
+	int OldActiID = ActivatorTID();
+	Thing_ChangeTID(0,UniqueTid(1000,""));
+	int NewActiID = ActivatorTID();
+
+	SetActivatorToTarget(0);
+
+	int OldTargID = ActivatorTID();
+	Thing_ChangeTID(0,UniqueTid(1000,""));
+	int NewTargID = ActivatorTID();
+
+	int angle, dx, dy, velx, vely, dist, cross, distsqr, originalAngle;
+
+	dx = (GetActorX(NewTargID)-GetActorX(NewActiID));
+	dy = (GetActorY(NewTargID)-GetActorY(NewActiID));
+	dist = VectorLength(dx,dy)>>16;
+	velx = GetActorVelX(NewTargID)>>16;
+	vely = GetActorVelY(NewTargID)>>16;
+	cross = -(velx*(dy>>16)) + (vely*(dx>>16));
+	distsqr = dist*dist;
+	
+	angle = ( ( ( (360*cross)/(94*dist) ) ) )+((VectorAngle(dx,dy))*360/65536);
+	
+	originalAngle = GetActorAngle(NewActiID)*360/65536;    //Get's the current's shooter angle
+	
+	Thing_ChangeTID(NewTargID,OldTargID);
+	Thing_ChangeTID(NewActiID,OldActiID);
+	
+	//if the shooter is far away, it shoots directly at the player.  This is so that monster does not shoot in weird directions when fighting through a portal.
+	if(dist > 3000)
+	{
+	SetResultValue(originalAngle);			
+	}
+	else
+	{
+	SetResultValue(angle);
+	}
+	
+	//print(s:"angle ",d: originalAngle, s:"   cross ",d: cross, s:"   dist ",d: dist);
+
+	
+}
