@@ -17,6 +17,6 @@ not-so-free hexen iwad which you buy on steam.  Fortunately, ShadesMan has
 done a video of them playing my map which you can watch on youtube:
 https://www.youtube.com/watch?v=No_eOpvK2_E&t=1767s
 
-###
+### Release Project Thread
 I released this project on Doomworld (among other places):
 https://www.doomworld.com/forum/topic/123133-twisted-reality-hexen-gzdoom-only/
