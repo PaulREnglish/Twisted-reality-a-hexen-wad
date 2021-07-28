@@ -1,7 +1,8 @@
 This is the script I use to get the monster to predict the player's movements and hence 'lead their shots.' 
 It assumes the player is travelling in a circle at a constant speed (which is a common tactic players use in the hexen games) 
-There are a few things I forgot to amend such as the redundant distsqr variable.
+The distsqr variable is redundant and should really be removed.
 
+**Beginning of script**
 //I've changed this script to return the current shooter's angle if the target it too far away (this means you must you A_FaceTarget in order for this to work.)
 // Yes I could use GetActorAngle instead of VectorAngle but I'd rather not mess too much with the code.
 
